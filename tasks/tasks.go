@@ -181,4 +181,15 @@ func WorkRange() {
 
 		}
 	}
+
+	fmt.Println(s)
+
+	sp := "shakhzod"
+
+	fmt.Println(len(sp))
+	fmt.Println(s)
+
+	for i := 0; i < len(sp); i++ {
+		fmt.Printf("%d  %c\n", i, sp[i])
+	}
 }
