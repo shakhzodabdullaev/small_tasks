@@ -1,6 +1,9 @@
 package tasks
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func TaskN1() {
 
@@ -103,6 +106,13 @@ func Slice() {
 	rangeOne2 := scores[2:4]
 	fmt.Println(rangeOne, rangeOne2)
 
+	for i, v := range scores {
+		fmt.Printf("%d:%d\n", i, v)
+	}
+
+	sort.Ints(scores)
+	fmt.Println(scores)
+
 }
 
 func WorkRange() {
@@ -112,7 +122,7 @@ func WorkRange() {
 		sum += numSlice
 	}
 	fmt.Println(sum)
-	*/
+
 	Slices := []int{21, 44, 55, 6}
 	for i := 0; i < len(Slices); i++ {
 		fmt.Println(Slices[i])
@@ -120,5 +130,55 @@ func WorkRange() {
 	fmt.Println("*************")
 	for i, v := range Slices {
 		fmt.Printf("\n %d: %d", i, v)
+	}*/
+	var s string = "\n **************"
+	ages := []int{
+		18, 19, 20, 21, 22, 23,
+	}
+
+	for i := 0; i < len(ages); i++ {
+		fmt.Println(ages[i])
+	}
+	fmt.Println(s)
+	for _, elements := range ages {
+		fmt.Println("", elements)
+	}
+
+	fmt.Println(s)
+
+	for i, _ := range ages {
+		fmt.Println(s)
+		fmt.Println("", i)
+	}
+
+	names := []string{
+		"shakhzod", "Ixtiyor", "Nurbek", "Hasan", "Sardor",
+	}
+	fmt.Println(s)
+	for i := 0; i < len(names); i++ {
+
+		fmt.Println(names[i])
+	}
+
+	fmt.Println(s)
+
+	for i, v := range names {
+		fmt.Println("", i, "", v)
+	}
+
+	fmt.Println(s)
+
+	for i := 0; i <= 10; i += 2 {
+		fmt.Println(i)
+		continue
+	}
+
+	fmt.Println(s)
+
+	for x := 0; x <= 1000; x += 12 {
+		if x != 0 && x%3 == 0 && x%7 == 0 && x%9 == 0 {
+			fmt.Println(x)
+
+		}
 	}
 }
