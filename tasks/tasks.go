@@ -2,7 +2,9 @@ package tasks
 
 import (
 	"fmt"
+	"math"
 	"sort"
+	"strings"
 )
 
 func TaskN1() {
@@ -146,10 +148,10 @@ func WorkRange() {
 
 	fmt.Println(s)
 
-	for i, _ := range ages {
+	/*for i, _ := range ages {
 		fmt.Println(s)
 		fmt.Println("", i)
-	}
+	}*/
 
 	names := []string{
 		"shakhzod", "Ixtiyor", "Nurbek", "Hasan", "Sardor",
@@ -192,4 +194,60 @@ func WorkRange() {
 	for i := 0; i < len(sp); i++ {
 		fmt.Printf("%d  %c\n", i, sp[i])
 	}
+}
+
+func Mutable() {
+	var a string = "shakh"
+	fmt.Println(a)
+}
+
+func SayGdmorning(n string) {
+	fmt.Printf("Hello %s\n", n)
+}
+
+func SayBye(n string) {
+	fmt.Printf("Good Bye %s \n", n)
+}
+
+func Function(n []string, f func(string)) {
+	for _, v := range n {
+		f(v)
+	}
+}
+
+func CycleArea(r float64) float64 {
+
+	return math.Pi * r * r
+
+}
+
+func GetInitials(n string) (string, string) {
+	s := strings.ToUpper(n)
+	names := strings.Split(s, " ")
+
+	var initial []string
+	for _, v := range names {
+		initial = append(initial, v[:1])
+	}
+	if len(initial) > 1 {
+		return initial[0], initial[1]
+	}
+
+	return initial[0], "_"
+}
+
+func MapSructure() {
+	menu := map[string]float64{
+		"pie":       32.34,
+		"soup":      22.5,
+		"chocalate": 12.2,
+		"tea":       2.2,
+	}
+
+	fmt.Print(menu, "\n")
+
+	for k, v := range menu {
+		fmt.Println(k, "", v)
+	}
+
 }
