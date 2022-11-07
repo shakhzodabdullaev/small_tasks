@@ -251,3 +251,68 @@ func MapSructure() {
 	}
 
 }
+
+/*func CreatePhoneNumber(n [10]int) string {
+/*code := n[:3]uint{}
+StrCode := strconv.Itoa(code)
+numbers := n[3:6]uint{}
+strNumber := strconv.Itoa(numbers)
+number2:= n[6:]uint{}
+strNumber2 := strconv.Itoa(number2)
+*/
+
+/*	code := n[:3]
+
+	StrCode := strconv.Itoa(code[3])
+
+	number := n[3:6]
+
+	strNumber := strconv.Itoa(number[3])
+
+	number2 := n[6:]
+
+	strNumber2 := strconv.Itoa(number2[4])
+
+	Numbers := fmt.Printf("(%s)%s-%s", StrCode, strNumber, strNumber2)
+
+	return Numbers
+}*/
+
+/*func CreatePhoneNumber2(n [10]int) string {
+
+/*for _, v := range n {
+	each := strconv.Itoa(v)
+}
+phoneNumber := fmt.Println(each)
+return phoneNumber
+*/
+/*	for i := 0; i < len(n); i++ {
+		strNumber2 := strconv.Itoa(n)
+	}
+}*/
+
+// Pass by value
+
+func UpdateName(n string) string {
+	n = "Salim"
+	return n
+}
+
+func Salim() {
+	type patient struct {
+		id         uint
+		name       string
+		rank       string
+		salary     float32
+		valueIndex uint
+	}
+
+	b := patient{
+		id:         1,
+		name:       "Shakh",
+		rank:       "Pro",
+		salary:     7000,
+		valueIndex: 10 / 10,
+	}
+	fmt.Println(b)
+}

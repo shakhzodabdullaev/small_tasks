@@ -1,6 +1,9 @@
 package main
 
-import "small_tasks/tasks"
+import (
+	"fmt"
+	"small_tasks/tasks"
+)
 
 func main() {
 	//tasks.Mutable()
@@ -36,5 +39,14 @@ func main() {
 	a3, b3 := tasks.GetInitials("shakh")
 	fmt.Println(a3, b3)
 	*/
-	tasks.MapSructure()
+	//tasks.MapSructure()
+	//	phoneNumber := tasks.CreatePhoneNumber2([10]int{2, 4, 5, 6, 7, 8, 9, 7, 9, 0})
+	//	fmt.Println(phoneNumber)
+
+	name := "shakha"
+
+	name = tasks.UpdateName(name)
+
+	fmt.Println(name)
+	tasks.Salim()
 }
