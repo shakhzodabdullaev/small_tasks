@@ -153,7 +153,7 @@ func WorkRange() {
 		fmt.Println("", i)
 	}*/
 
-	names := []string{
+/*	names := []string{
 		"shakhzod", "Ixtiyor", "Nurbek", "Hasan", "Sardor",
 	}
 	fmt.Println(s)
@@ -251,7 +251,7 @@ func MapSructure() {
 	}
 
 }
-
+*/
 /*func CreatePhoneNumber(n [10]int) string {
 /*code := n[:3]uint{}
 StrCode := strconv.Itoa(code)
@@ -293,26 +293,95 @@ return phoneNumber
 
 // Pass by value
 
-func UpdateName(n string) string {
+/*func UpdateName(n string) string {
 	n = "Salim"
 	return n
+}*/
+
+type patient struct {
+	id         uint
+	name       string
+	rank       string
+	salary     float32
+	valueIndex int
+	items      map[string]float64
 }
 
-func Salim() {
-	type patient struct {
-		id         uint
-		name       string
-		rank       string
-		salary     float32
-		valueIndex uint
-	}
+func Salim(name string) patient {
 
 	b := patient{
 		id:         1,
-		name:       "Shakh",
+		name:       name,
 		rank:       "Pro",
 		salary:     7000,
-		valueIndex: 10 / 10,
+		valueIndex: 10,
+		items:      map[string]float64{"cola-1.5": 1.1, "pie": 2.9},
 	}
 	fmt.Println(b)
+	return b
+}
+
+func (b patient) Format() string{
+	fs := "Items broke down.."
+
+	var total float64 = 0
+// list of items 
+	for k, v := range b.items {
+		fs += fmt.Sprintf("%-25v ...%v\n", k+":", v)
+
+	}
+// value Index
+	fs += fmt.Sprintf("%25v ...%v\n", "Value_Index:", b.valueIndex)
+	// total
+
+	fs += fmt.Sprintf("%-25v ...$%0.2f", "total:", total)
+	return fs
+}
+
+// update valueIndex
+func (b patient) UpdateValueIndex(valueIndex int){
+	b.valueIndex = valueIndex
+}
+
+// add items
+
+func (b patient) AddItem(name string, price float64) {
+	b.items[name] = price
+}
+
+
+
+/*func CountSheeps(numbers []bool) int {
+	sum := 0
+
+	for i := 0; i < len(numbers); i++ {
+		if numbers[i] == true {
+			sum++
+		}
+	}
+	return sum
+}*/
+
+// your code here
+
+/*func kata_1(n int) []int {
+
+
+	NumErr :=
+	return nil
+}*/
+
+
+type MyString string
+
+func (s MyString) IsUpperCase() bool {
+  var res bool
+if s.IsUpper() == true {
+  res = true
+}else {
+  res = false
+}
+  
+  // Your code here!
+  return res
 }
