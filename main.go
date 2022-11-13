@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
-	"unicode"
 )
 
 func main() {
@@ -74,6 +74,8 @@ func main() {
 
 	mybill := CreateBill()
 	fmt.Println(mybill)
+	PromptOpt(mybill)
+
 	//	res := IsUpper("SsSsSSSS")
 	//	fmt.Print(res)
 }
@@ -91,7 +93,17 @@ func InputFunc() {
 type bill struct {
 	name  string
 	items map[string]float32
-	tips  int
+	tips  float64
+}
+
+/*
+func (b bill) UpdateTip(tip float64) {
+	b.tips = float64(tips)
+}*/
+
+func (b bill) AddItem(name string, price float64) {
+	b.items[name] = float32(price)
+
 }
 
 func GetInput(prompt string, r *bufio.Reader) (string, error) {
@@ -122,8 +134,29 @@ func NewBill(name string) bill {
 
 func PromptOpt(b bill) {
 	reader := bufio.NewReader(os.Stdin)
-	opt, _ := GetInput("Choose option (a - add item, s - save bill, t - add tip)", reader)
-	fmt.Println(opt)
+	opt, _ := GetInput("Choose option (a - add item, s - save bill, t - add tip):", reader)
+	switch opt {
+	case "a":
+		name, _ := GetInput("Item name: ", reader)
+		price, _ := GetInput("Item price($): ", reader)
+
+		p, err := strconv.ParseFloat(price, 64)
+		if err != nil {
+			fmt.Println("The price must be number")
+			PromptOpt(b)
+		}
+		b.AddItem(name, p)
+		fmt.Println("Irem are added - ", name, price)
+		fmt.Println(b)
+	case "t":
+		tip, _ := GetInput("Enter tip amount ($)", reader)
+		fmt.Println(tip)
+	case "s":
+		fmt.Println("You chose s")
+	default:
+		fmt.Println("that was not a valid option")
+		PromptOpt(b)
+	}
 }
 
 //func PromptOptions(b bill) {
@@ -131,11 +164,11 @@ func PromptOpt(b bill) {
 //opt, _ := get
 //}
 
-func IsUpper(s string) bool {
+/*func IsUpper(s string) bool {
 	for _, r := range s {
 		if !unicode.IsUpper(r) && unicode.IsLetter(r) {
 			return false
 		}
 	}
 	return true
-}
+}*/

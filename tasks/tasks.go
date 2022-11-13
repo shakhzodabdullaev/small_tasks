@@ -298,7 +298,7 @@ return phoneNumber
 	return n
 }*/
 
-type patient struct {
+/*type patient struct {
 	id         uint
 	name       string
 	rank       string
@@ -342,12 +342,12 @@ func (b patient) Format() string{
 func (b patient) UpdateValueIndex(valueIndex int){
 	b.valueIndex = valueIndex
 }
-
+*/
 // add items
 
-func (b patient) AddItem(name string, price float64) {
+/*func (b patient) AddItem(name string, price float64) {
 	b.items[name] = price
-}
+}*/
 
 
 
@@ -372,7 +372,7 @@ func (b patient) AddItem(name string, price float64) {
 }*/
 
 
-type MyString string
+/*type MyString string
 
 func (s MyString) IsUpperCase() bool {
   var res bool
@@ -384,4 +384,4 @@ if s.IsUpper() == true {
   
   // Your code here!
   return res
-}
+}*/
