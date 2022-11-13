@@ -78,6 +78,10 @@ func main() {
 
 	//	res := IsUpper("SsSsSSSS")
 	//	fmt.Print(res)
+
+	/*s := "salom sevgi"
+	fmt.Println(len(s))
+	fmt.Print(s[0:2])*/
 }
 
 /*
@@ -96,10 +100,9 @@ type bill struct {
 	tips  float64
 }
 
-/*
 func (b bill) UpdateTip(tip float64) {
-	b.tips = float64(tips)
-}*/
+	b.tips = float64(tip)
+}
 
 func (b bill) AddItem(name string, price float64) {
 	b.items[name] = float32(price)
@@ -132,6 +135,18 @@ func NewBill(name string) bill {
 	return b
 }
 
+func exitoption(b bill) {
+	r := bufio.NewReader(os.Stdin)
+	ExC, _ := GetInput("Do you want to continue y/n:", r)
+	switch ExC {
+	case "y":
+
+		PromptOpt(b)
+	case "n":
+		os.Exit(0)
+	}
+}
+
 func PromptOpt(b bill) {
 	reader := bufio.NewReader(os.Stdin)
 	opt, _ := GetInput("Choose option (a - add item, s - save bill, t - add tip):", reader)
@@ -146,17 +161,30 @@ func PromptOpt(b bill) {
 			PromptOpt(b)
 		}
 		b.AddItem(name, p)
+
 		fmt.Println("Irem are added - ", name, price)
 		fmt.Println(b)
 	case "t":
 		tip, _ := GetInput("Enter tip amount ($)", reader)
 		fmt.Println(tip)
+
+		t, err := strconv.ParseFloat(tip, 64)
+		if err != nil {
+			fmt.Println("The tip must be number")
+			PromptOpt(b)
+		}
+		b.UpdateTip(t)
+		fmt.Println("Tip added - ", tip)
+		PromptOpt(b)
+
 	case "s":
-		fmt.Println("You chose s")
+		fmt.Println("You chose s to save the bill: ", b)
 	default:
 		fmt.Println("that was not a valid option")
 		PromptOpt(b)
 	}
+	exitoption(b)
+
 }
 
 //func PromptOptions(b bill) {
